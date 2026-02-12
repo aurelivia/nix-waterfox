@@ -4,8 +4,8 @@
 <h1 align="center">Nix Waterfox</h1>
 
 <p align="center">
-<a href="https://www.waterfox.com/download" target="_blank"><img height=20 src="https://img.shields.io/badge/version-6.6.8-blue" alt="version"/></a>
-<a href="https://github.com/Hythera/nix-waterfox/stargazers" target="_blank"><img height=20 src="https://img.shields.io/github/stars/Hythera/nix-waterfox" alt="stars"/>
+<a href="https://www.waterfox.com/download"><img src="https://img.shields.io/badge/version-6.6.8-blue" alt="version"/></a>
+<a href="https://github.com/Hythera/nix-waterfox/stargazers"><img src="https://img.shields.io/github/stars/Hythera/nix-waterfox" alt="stars"/>
 </p>
 
 <div align="center">
@@ -42,13 +42,13 @@ waterfox
 
 ### System Package
 
-The second way is to install Waterfox on your NixOS system. While you can use the `waterfox` package, it is recommended to use the `waterfox-bin` package, as the from-source build can take up to 2 hours depending on your system. If you don't want to install Waterfox globally, you can use tools like **home-manager**. Just use `home.packages` in you home-configuration instead.
+The second way is to install Waterfox on your NixOS system. While you can use the `waterfox` package, it is recommended to use the `waterfox-bin` package, as the from-source build can take up to 2 hours depending on your system. If you don't want to install Waterfox globally, you can use tools like **home-manager**. Just use `home.packages` instead of `environment.systemPackages` in you home-configuration.
 
 ```nix
 # flake.nix
 {
   inputs = {
-    rootapp.url = "github:Hythera/nix-waterfox";
+    waterfox.url = "github:Hythera/nix-waterfox";
     ...
   };
   outputs = {
