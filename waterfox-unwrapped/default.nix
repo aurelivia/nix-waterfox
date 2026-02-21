@@ -2,7 +2,7 @@
   apple-sdk_15,
   buildMozillaMach,
   fetchFromGitHub,
-  icu76,
+  icu,
   lib,
   stdenv,
 }:
@@ -28,15 +28,19 @@ buildMozillaMach rec {
   extraBuildInputs = lib.optionals stdenv.hostPlatform.isDarwin [
     apple-sdk_15
   ];
+
   extraNativeBuildInputs = [
-    icu76
+    icu
   ];
+
   extraConfigureFlags = [
     "--with-app-basename=${applicationName}"
   ];
+
   extraPatches = [
     ./remove-missing-icons.patch
   ]; # Some of the icons are missing and cause the build to crash. Removing them fixes the issue
+
   extraPostPatch = ''
     rm .mozconfig .mozcinfig-*
   ''; # buildMozillaMach will take care of the build arguments
