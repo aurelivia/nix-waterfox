@@ -1,5 +1,4 @@
 {
-  apple-sdk_15,
   buildMozillaMach,
   fetchFromGitHub,
   icu,
@@ -8,7 +7,7 @@
 }:
 buildMozillaMach rec {
   pname = "waterfox";
-  version = "6.6.9";
+  version = "6.6.10";
   applicationName = "Waterfox";
   binaryName = "waterfox";
   branding = "waterfox/browser/branding";
@@ -16,7 +15,7 @@ buildMozillaMach rec {
     owner = "BrowserWorks";
     repo = "Waterfox";
     tag = version;
-    hash = "sha256-mrbXjztb4+qUnXEB/WrXN0x6AiBjz7yPqLwTuqeQfUg=";
+    hash = "sha256-hYIci/tT8coo+qxngTQjOjGFY+ztSfT1BNVkULdRw3k=";
     fetchSubmodules = true;
     preFetch = ''
       export GIT_CONFIG_COUNT=1
@@ -33,16 +32,12 @@ buildMozillaMach rec {
     icu
   ];
 
-  extraConfigureFlags = [
-    "--with-app-basename=${applicationName}"
-  ];
-
   extraPatches = [
     ./remove-missing-icons.patch
   ]; # Some of the icons are missing and cause the build to crash. Removing them fixes the issue
 
   extraPostPatch = ''
-    rm .mozconfig .mozcinfig-*
+    rm .mozconfig .mozconfig-*
   ''; # buildMozillaMach will take care of the build arguments
 
   meta = {
