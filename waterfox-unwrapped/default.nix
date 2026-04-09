@@ -1,4 +1,5 @@
 {
+  apple-sdk_15,
   buildMozillaMach,
   fetchFromGitHub,
   icu,
@@ -7,7 +8,7 @@
 }:
 buildMozillaMach rec {
   pname = "waterfox";
-  version = "6.6.10";
+  version = "6.6.11";
   applicationName = "Waterfox";
   binaryName = "waterfox";
   branding = "waterfox/browser/branding";
@@ -15,7 +16,7 @@ buildMozillaMach rec {
     owner = "BrowserWorks";
     repo = "Waterfox";
     tag = version;
-    hash = "sha256-hYIci/tT8coo+qxngTQjOjGFY+ztSfT1BNVkULdRw3k=";
+    hash = "sha256-Gp9n4PMWtAsptCTuoIN/vcL42TFAZh/wSWB7ptS0rME=";
     fetchSubmodules = true;
     preFetch = ''
       export GIT_CONFIG_COUNT=1
